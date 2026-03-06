@@ -20,11 +20,12 @@ function mapRangoEdad(value) {
 
 function mapDestinoVivienda(value) {
   const map = {
-    primera: "Primera vivienda",
-    segunda: "Segunda vivienda",
-    inversion: "Inversión",
+    primera:    "Primera vivienda",
+    segunda:    "Segunda vivienda",
+    inversion:  "Inversión",
+    reposicion: "Reposición",
   };
-  return map[value] || value;
+  return map[value] || "Sin definir";
 }
 
 function buildColumnValues(form) {
@@ -32,7 +33,7 @@ function buildColumnValues(form) {
 
   const columns = {
     // ── Checkbox ──────────────────────────────────────────────────────────────
-    boolean_mkvw55qp: { checked: form.privacidad === true ? "true" : "false" },
+    boolean_mkvw55qp: { checked: "true" },                   // Política de Privacidad (siempre aceptada)
 
     // ── Dropdown ─────────────────────────────────────────────────────────────
     dropdown_mm131mxd: { labels: [form.idioma] },           // Idioma preferido
