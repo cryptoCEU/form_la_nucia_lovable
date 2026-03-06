@@ -33,7 +33,7 @@ function buildColumnValues(form) {
     date_mksbjga2: { date: today },                          // Fecha de entrada
 
     // ── Phone ────────────────────────────────────────────────────────────────
-    lead_phone: { phone: form.telefono, countryShortName: "ES" },
+    lead_phone: { phone: form.telefono.replace(/\s/g, ""), countryShortName: "ES" },
 
     // ── Email ────────────────────────────────────────────────────────────────
     lead_email: { email: form.email, text: form.email },
