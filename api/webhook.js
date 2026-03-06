@@ -5,6 +5,17 @@ const MONDAY_API_URL = "https://api.monday.com/v2";
 
 // ─── Field Mappers ────────────────────────────────────────────────────────────
 
+function mapRangoEdad(value) {
+  const map = {
+    "31-45":  "31 - 45",
+    "46-55":  "46 - 55",
+    "56-65":  "56 - 65",
+    ">30":    "> 30",
+    "<65":    "< 65",
+  };
+  return map[value] || value || "Sin definir";
+}
+
 function mapDestinoVivienda(value) {
   const map = {
     primera: "Primera vivienda",
@@ -47,7 +58,7 @@ function buildColumnValues(form) {
     color_mm165spb:  { label: "Lead Nuevo" },                // Estado Lead
 
     // ── Status (valores del formulario) ──────────────────────────────────────
-    color_mksg46wh:  { label: form.edad },                   // Rango Edad
+    color_mksg46wh:  { label: mapRangoEdad(form.edad) },      // Rango Edad
     color_mm1274dx:  { label: form.presupuesto },            // Presupuesto
     color_mm0ee37e:  { label: mapDestinoVivienda(form.destinoVivienda) }, // Destino vivienda
   };
