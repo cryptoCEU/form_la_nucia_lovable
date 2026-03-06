@@ -7,13 +7,15 @@ const MONDAY_API_URL = "https://api.monday.com/v2";
 
 function mapRangoEdad(value) {
   const map = {
+    "<30":    "> 30",   // Monday no tiene "< 30", se mapea al rango más cercano
     "31-45":  "31 - 45",
     "46-55":  "46 - 55",
     "56-65":  "56 - 65",
+    ">65":    "< 65",
     ">30":    "> 30",
     "<65":    "< 65",
   };
-  return map[value] || value || "Sin definir";
+  return map[value] || "Sin definir";
 }
 
 function mapDestinoVivienda(value) {
