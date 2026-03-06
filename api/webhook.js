@@ -44,7 +44,7 @@ function buildColumnValues(form) {
     // ── Status (valores fijos) ────────────────────────────────────────────────
     color_mks7cm2f:  { label: "Mail" },                      // Tipo de gestión
     color_mks9ct6h:  { label: "Formulario web" },            // Origen del contacto
-    color_mm165spb:  { label: "Nuevo lead" },                // Estado Lead
+    color_mm165spb:  { label: "Lead Nuevo" },                // Estado Lead
 
     // ── Status (valores del formulario) ──────────────────────────────────────
     color_mksg46wh:  { label: form.edad },                   // Rango Edad
