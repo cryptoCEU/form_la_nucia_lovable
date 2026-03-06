@@ -23,7 +23,7 @@ function buildColumnValues(form) {
 
     // ── Dropdown ─────────────────────────────────────────────────────────────
     dropdown_mm131mxd: { labels: [form.idioma] },           // Idioma preferido
-    dropdown_mksdgtr8: {                                     // Detalle tipología (dormitorios)
+    dropdown_mksd92xa: {                                     // Tipología interés (dormitorios)
       labels: Array.isArray(form.dormitorios)
         ? form.dormitorios
         : [form.dormitorios],
