@@ -14,12 +14,6 @@ function mapDestinoVivienda(value) {
   return map[value] || value;
 }
 
-function mapDormitorios(arr) {
-  // Monday dropdown only accepts one label; join multiple selections
-  if (!arr || arr.length === 0) return null;
-  return arr.join(", ");
-}
-
 function buildColumnValues(form) {
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
@@ -47,7 +41,12 @@ function buildColumnValues(form) {
     // ── Text ─────────────────────────────────────────────────────────────────
     text_mm12yqx0: form.codigoPostal,                        // Código Postal
 
-    // ── Status ───────────────────────────────────────────────────────────────
+    // ── Status (valores fijos) ────────────────────────────────────────────────
+    color_mks7cm2f:  { label: "Mail" },                      // Tipo de gestión
+    color_mks9ct6h:  { label: "Formulario web" },            // Origen del contacto
+    color_mm165spb:  { label: "Nuevo lead" },                // Estado Lead
+
+    // ── Status (valores del formulario) ──────────────────────────────────────
     color_mksg46wh:  { label: form.edad },                   // Rango Edad
     color_mm1274dx:  { label: form.presupuesto },            // Presupuesto
     color_mm0ee37e:  { label: mapDestinoVivienda(form.destinoVivienda) }, // Destino vivienda
@@ -123,7 +122,6 @@ async function createMondayItem(form) {
 // ─── Handler ──────────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
-  // CORS headers (adjust origin to your Lovable domain in production)
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
@@ -138,7 +136,6 @@ export default async function handler(req, res) {
 
   const form = req.body;
 
-  // ── Basic validation ───────────────────────────────────────────────────────
   const required = ["nombre", "telefono", "email"];
   const missing  = required.filter((f) => !form[f]);
   if (missing.length > 0) {
